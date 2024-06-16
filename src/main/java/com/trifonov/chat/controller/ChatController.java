@@ -1,14 +1,25 @@
 package com.trifonov.chat.controller;
 
+
+import com.trifonov.chat.model.ChatMessage;
+import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class ChatController {
 
-    @GetMapping("/")
-    public String showChatPAge() {
-        return "chat";
+    @MessageMapping("/chat.sendMessage")
+    @SendTo("/topic/public")
+    public ChatMessage sendMessage(ChatMessage chatMessage) {
+        return chatMessage;
     }
 
+    @MessageMapping("/chat.newUser")
+    @SendTo("/topic/public")
+    public ChatMessage newUser(ChatMessage chatMessage) {
+        chatMessage.setContent("New user joined: " + chatMessage.getSender());
+        return chatMessage;
+    }
 }
+
