@@ -3,19 +3,21 @@ body {
 }
 
 #chat-container {
-    width: 60%;
+    width: 150vh;
     margin: 0 auto;
     border: 1px solid #ccc;
     padding: 10px;
     background-color: #f9f9f9;
+    border-radius: 5px;
 }
 
 #message-container {
-    height: 300px;
+    height: 80vh;
     overflow-y: scroll;
     border: 1px solid #ccc;
     margin-bottom: 10px;
     padding: 5px;
+    border-radius: 5px;
 }
 
 .message {
@@ -24,4 +26,27 @@ body {
     border-radius: 10px;
     background: rgb(2,0,36);
     background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(2,105,69,0.39267044708508403) 0%, rgba(17,168,174,1) 100%, rgba(0,212,255,1) 100%);
+}
+
+#users-container {
+    float: left;
+    height: 80vh;
+    overflow-y: scroll;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    margin-right: 5px;
+    padding: 7px;
+    border-radius: 5px;
+}
+
+ul {
+    list-style: none;
+}
+
+li::before {
+    content: "@";
+    color: green;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em
 }
